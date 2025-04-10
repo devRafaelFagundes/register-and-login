@@ -1,0 +1,98 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+}
+#loginContainer {
+    width: 50%;
+    height: 100vh;
+}
+#registerContainer {
+    width: 50%;
+    height: 100vh;
+    background-color: #00A3E8;
+    color: white;
+}
+h1{
+    text-align: center;
+    color: #00A3E8;
+    font-size: 2.5em;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+.subtitle{
+    color: #8F9AA2;
+    text-align: center;
+    margin-bottom: 15%;
+    margin-top: 5%;
+}
+#registerSubtitle {
+    color: white;
+}
+.forms {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10%;
+}
+input {
+    height: 23px;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 1em;
+    background-color: #EFF3F6;
+    border: solid #E4E8ED;
+    margin-bottom: 10px;
+}
+label {
+    margin-bottom: 15px;
+}
+.button {
+    color: white;
+    background-color: #00A3E8;
+    border-radius: 15px;
+    border: none;
+    height: 40px;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+#registerButton {
+    background-color: white;
+    color: #00A3E8;
+}
+.button:hover {
+    transform: scale(1.05);    /* Leve ampliação para destacar o botão */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para dar profundidade */
+    transition-duration: 300ms;
+}
+
+#titleRegister {
+    color: white;
+}
+
+
+@media (max-width: 650px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #registerContainer, #loginContainer {
+        width: 100%;
+        height: 85%;
+    }
+    #loginButton {
+        margin-bottom: 20px;
+    }
+}
+#error {
+    color: #F28022;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
+}
