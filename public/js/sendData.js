@@ -18,7 +18,25 @@ registerForm.addEventListener('submit', async (e)=>{
     
         const data = await res.json();
         if (res.ok) {
-            alert("user created, now you are ready to login")
+            try {
+                const res = await fetch("http://localhost:3000/login", {
+                    method : "POST",
+                    headers : {"Content-type" : "application/json"},
+                    body : JSON.stringify({username, email, password})
+                })
+                const data = await res.json();
+                if (res.ok) {
+                    // alert("user logged in")
+                    // console.log(data.accessToken)
+                    window.location.href = "http://localhost:3000/welcome"
+        
+                } else {
+                    alert("something went wrong")
+                }
+            } catch (error) {
+                alert("something went wrong")
+                console.log(error)
+            }
         } else {
             // alert(data.message || "error trying to register")
             const errorSpace = document.getElementById("error")
@@ -38,7 +56,6 @@ loginForm.addEventListener('submit', async (e)=>{
     const username = document.getElementById("username-login").value;
     const email = document.getElementById("email-login").value;
     const password = document.getElementById("password-login").value;
-    
     try {
         const res = await fetch("http://localhost:3000/login", {
             method : "POST",
@@ -47,7 +64,10 @@ loginForm.addEventListener('submit', async (e)=>{
         })
         const data = await res.json();
         if (res.ok) {
-            alert("user logged in")
+            // alert("user logged in")
+            // console.log(data.accessToken)
+            window.location.href = "http://localhost:3000/welcome"
+
         } else {
             alert("something went wrong")
         }
@@ -55,4 +75,5 @@ loginForm.addEventListener('submit', async (e)=>{
         alert("something went wrong")
         console.log(error)
     }
+    
 })

@@ -89,6 +89,9 @@ label {
     #loginButton {
         margin-bottom: 20px;
     }
+    #registerButton {
+        margin-bottom: 20px;
+    }
 }
 #error {
     color: #F28022;

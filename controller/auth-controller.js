@@ -70,10 +70,21 @@ const loginUser = async (req, res) =>{
     }, process.env.ACCESS_TOKEN_KEY, {
         expiresIn : "60m"
     })
-    
+
+    res.cookie('token', accessToken, {
+        httpOnly : true,
+        maxAge : 1000 * 60 * 30,
+        sameSite : 'Strict',
+        secure : process.env.NODE_ENV === 'production'
+    });
+    //httpnOnly: can not be requested by js
+    //maxAge: max time of a valid cookie
+    //secure: only httpS requests
+
     return res.status(200).json({
         success : true,
-        message : "user logged in"
+        message : "user logged in",
+        username
     })
 
     } catch (e) {
