@@ -2,6 +2,7 @@
 
 O **Register and Login** é um projeto Node.js criado para prática de autenticação de usuários, registro, login e proteção de rotas utilizando banco de dados NoSQL (MongoDB). O objetivo é fornecer uma base simples e funcional para sistemas que precisam de controle de acesso.
 
+![imagem da main-page](./public/images/image.png)
 ## Funcionalidades
 
 * Cadastro de usuários com nome, email e senha protegida
