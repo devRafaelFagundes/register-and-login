@@ -2,6 +2,7 @@ const { default: mongoose } = require("mongoose");
 const User = require("../model/user")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const sendConfirmationEmail = require("../helper/confirmationEmail")
 
 const registerUser = async (req, res) => {
     try {
@@ -23,6 +24,11 @@ const registerUser = async (req, res) => {
         password : hashedPassword,
     })
     if (newUser) {
+        const temporaryToken = jwt.sign(newUser, process.env.ACCESS_TOKEN_KEY, {
+            expiresIn : '15m'
+        });
+        //call the sendConfirmationEmail function and pass the email and token
+        await sendConfirmationEmail(temporaryToken, email)
         return res.status(200).json({
             success : true,
             message : "user created"
@@ -41,9 +47,6 @@ const registerUser = async (req, res) => {
         })
     }
 }
-    
-
-    
 
 const loginUser = async (req, res) =>{
     try {
