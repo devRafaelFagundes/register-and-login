@@ -23,8 +23,12 @@ const registerUser = async (req, res) => {
         email,
         password : hashedPassword,
     })
+    const payload = {
+        username: newUser.username,
+        email: newUser.email
+    }
     if (newUser) {
-        const temporaryToken = jwt.sign(newUser, process.env.ACCESS_TOKEN_KEY, {
+        const temporaryToken = jwt.sign(payload, process.env.ACCESS_TOKEN_KEY, {
             expiresIn : '15m'
         });
         //call the sendConfirmationEmail function and pass the email and token
@@ -68,8 +72,9 @@ const loginUser = async (req, res) =>{
 
     const accessToken = jwt.sign({
         userId : matchUser._id,
-        username,
-        email
+        username : matchUser.username,
+        email : matchUser.email,
+        isConfirmed : matchUser.isConfirmed
     }, process.env.ACCESS_TOKEN_KEY, {
         expiresIn : "60m"
     })

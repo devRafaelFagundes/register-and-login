@@ -15,14 +15,13 @@ const authMiddlware = async (req, res, next)=>{
     try {
         const decodedInformation = await jwt.verify(token, process.env.ACCESS_TOKEN_KEY)
         console.log(decodedInformation)
-        req.userInfo = decodedInformation;
-        if(!req.userInfo.isConfirmed) {
+        if(!decodedInformation.isConfirmed) {
             return res.status(400).json({
                 success : false,
                 message : 'Waiting for the email confirmation'
             })
         }
-        
+        req.userInfo = decodedInformation;        
         next();
     } catch (e) {
         return res.status(500).json({

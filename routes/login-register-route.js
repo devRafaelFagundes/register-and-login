@@ -20,14 +20,14 @@ router.get('/welcome', authMiddlware, (req, res)=>{
 router.get('/confirmation/:token', async (req, res, next) => {
     const token = req.params.token;
     try {
-        const decodedToken = await jwt.verify(token, process.env.ACCESS_TOKEN_KEY);
+        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_KEY);
         const username = decodedToken.username;
         const user = await User.findOne({
             username
         })
         if(!user) {
             return res.status(404).json({
-                sucess: false,
+                success: false,
                 message: "User not found"
             })
         }

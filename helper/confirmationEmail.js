@@ -17,6 +17,12 @@ const sendConfirmationEmail = async (token, clientEmail) => {
         subject: "BemEstar confirmação",
         html: `<h1>Confirme sua conta no BemEstar</h1> <p>Apenas clique no link e, após, recarregue a página principal: <a href="http://localhost:3000/confirmation/${token}">Confirmar</a></p>`
     }
+    try {
+        const result = await smtp.sendMail(configEmail)
+        console.log("Email enviado", result);
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 module.exports = sendConfirmationEmail;
