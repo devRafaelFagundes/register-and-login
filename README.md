@@ -1,6 +1,6 @@
 # Register and Login
 
-O **Register and Login** é um projeto Node.js criado para prática de autenticação de usuários, registro, login e proteção de rotas utilizando banco de dados NoSQL (MongoDB). O objetivo é fornecer uma base simples e funcional para sistemas que precisam de controle de acesso.
+O **Register and Login** é um projeto Node.js criado para prática de autenticação de usuários através de confirmação por email, registro, login e proteção de rotas utilizando banco de dados NoSQL (MongoDB). O objetivo é fornecer uma base simples e funcional para sistemas que precisam de controle de acesso.
 
 ![imagem da main-page](./public/images/image.png)
 ## Funcionalidades
@@ -19,6 +19,7 @@ O **Register and Login** é um projeto Node.js criado para prática de autentica
 * MongoDB e Mongoose
 * EJS (engine de visualização)
 * JWT (jsonwebtoken)
+* Nodemailer
 * bcrypt
 * dotenv
 * multer e cloudinary (funcionalidade incompleta)
@@ -64,7 +65,7 @@ O **Register and Login** é um projeto Node.js criado para prática de autentica
    ```
    http://localhost:3000
    ```
-
+obs: Lembre-se de colocar no arquivo .env as informações do seu email
 ## Estrutura do Projeto
 
 * `server.js`: Arquivo principal do servidor
